@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: guestbook-ingress
+  namespace: staging
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: guestbook-ip
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  backend:
+    serviceName: frontend
+    servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: guestbook-ingress
+  namespace: production
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: guestbook-ip2
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  backend:
+    serviceName: frontend
+    servicePort: 80

@@ -1,0 +1,5 @@
+### Create new container for testing load
+kubectl run -i --tty load-generator --image=busybox /bin/sh
+
+Run below script to increase load and check if autoscale working
+while true; do wget -q -O- http://nginx-ingress-ip/; done
